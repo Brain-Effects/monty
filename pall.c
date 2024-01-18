@@ -3,7 +3,7 @@
 #include "monty.h"
 
 /**
- * pall - prints all the values on the stack, starting from the top of the stack
+ * pall - prints all values on the stack, starting from the top of the stack
  * @stack: double pointer to the top of the stack
  * @line_number: line number
  * Return: nothing

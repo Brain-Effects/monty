@@ -35,5 +35,9 @@ void pall(stack_t **stack, unsigned int line_number);
 int _isdigit(char *str);
 int add_node(stack_t **stack, const int n);
 int main(int argc, char **argv);
+void check_argc(int argc);
+FILE *open_file(char *filename);
+char *allocate_line_buffer(size_t len);
+void process_line(char *line, stack_t **stack, unsigned int line_number);
 
 #endif
