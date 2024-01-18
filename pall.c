@@ -15,9 +15,15 @@ void pall(stack_t **stack, unsigned int line_number)
 
 	(void)line_number;
 	current = *stack;
+	/* Go to the bottom of the stack */
+	while (current && current->next != NULL)
+	{
+		current = current->next;
+	}
+	/* Print from bottom to top */
 	while (current != NULL)
 	{
 		printf("%d\n", current->n);
-		current = current->next;
+		current = current->prev;
 	}
 }
