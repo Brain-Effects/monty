@@ -28,9 +28,9 @@ void process_line(char *line, stack_t **stack, unsigned int line_number)
 		pall(stack, line_number);
 	}
 	else if (strcmp(opcode, "pint") == 0)
-          {
-              pint(stack, line_number);
-          }
+	{
+		pint(stack, line_number);
+	}
 	else
 		{
 		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
