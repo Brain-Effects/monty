@@ -1,25 +1,27 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "monty.h"
+
 /**
- * main - Entry point of the program
+ * main - Entry point, reads and executes commands from a file
  * @argc: The number of command line arguments
  * @argv: The command line arguments
  *
- * Description: This function opens the file specified by the user and reads it
- * line by line. If the user does not provide exactly one argument or if the
- * file cannot be opened, it prints an error message and exits. It also frees
- * any memory allocated and closes the file before exiting.
+ * Description: This function opens a file containing Monty byte codes,
+ * reads each line, and executes the opcode on each line. If an error
+ * occurs, it prints an error message and exits.
  *
- * Return: 0 on success, EXIT_FAILURE on failure
+ * Return: EXIT_SUCCESS on success, or EXIT_FAILURE on error
  */
-int main(int argc, char *argv[])
+int main(int argc, char **argv)
 {
 	FILE *file;
 	char *line = NULL;
-	size_t len = 0;
-	ssize_t read;
+	size_t len = 1024;
+	char *opcode;
 	unsigned int line_number = 0;
+	stack_t *stack = NULL;
 
 	if (argc != 2)
 	{
@@ -34,10 +36,33 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 
-	while ((read = getline(&line, &len, file)) != -1)
+	line = malloc(len);
+	if (!line)
 	{
-		line_number++;
-	/* Parse the line and execute the opcode */
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
+
+	while (fgets(line, len, file) != NULL)
+	{
+	line_number++;
+	opcode = strtok(line, "\n\t\r ");
+	if (opcode != NULL)
+		{
+		if (strcmp(opcode, "push") == 0)
+		{
+		push(&stack, line_number);
+		}
+		else if (strcmp(opcode, "pall") == 0)
+		{
+		pall(&stack, line_number);
+		}
+		else
+		{
+		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
+		exit(EXIT_FAILURE);
+		}
+		}
 	}
 
 	free(line);

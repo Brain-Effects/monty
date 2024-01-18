@@ -30,7 +30,10 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
-void push(stack_t **stack, unsigned int line_number, const char *n);
+int _isdigit(char *str);
+int add_node(stack_t **stack, const int n);
+int main(int argc, char **argv);
 
 #endif
