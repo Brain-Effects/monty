@@ -1,6 +1,9 @@
 #ifndef MONTY_H
 #define MONTY_H
 
+#include <stdio.h>
+#include <stdlib.h>
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -39,5 +42,6 @@ void check_argc(int argc);
 FILE *open_file(char *filename);
 char *allocate_line_buffer(size_t len);
 void process_line(char *line, stack_t **stack, unsigned int line_number);
+void pint(stack_t **stack, unsigned int line_number);
 
 #endif
