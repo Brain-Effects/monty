@@ -43,8 +43,9 @@ typedef struct instruction_s
  */
 typedef struct global_s
 {
-    unsigned int line_number;
-    FILE *file;
+	int mode;
+	unsigned int line_number;
+	FILE *file;
 } global_t;
 
 void push(stack_t **stack, unsigned int line_number);
@@ -61,5 +62,11 @@ void pop(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
 void add(stack_t **stack, unsigned int line_number);
+void div_stack(stack_t **stack);
+void mul(stack_t **stack);
+void mod(stack_t **stack);
+void process_file(char *filename);
+void pchar(stack_t **stack);
+void pstr(stack_t **stack);
 
 #endif /* MONTY_H */
