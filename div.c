@@ -12,16 +12,15 @@
  * by the top element, store the result in the second top element, and remove
  * the top element.
  */
-global_t global;
+global_t global = {0, 0, NULL};
 
 void div_stack(stack_t **stack)
 {
 	stack_t *temp;
-
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
-	fprintf(stderr, "L%d: can't div, stack too short\n", global.line_number);
-	exit(EXIT_FAILURE);
+		fprintf(stderr, "L%d: can't div, stack too short\n", global.line_number);
+		exit(EXIT_FAILURE);
 	}
 	if ((*stack)->n == 0)
 	{

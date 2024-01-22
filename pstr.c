@@ -8,13 +8,15 @@
  * @stack: double pointer to the top of the stack
  *
  * Description: The integer stored in each element of the stack is treated as
- * the ASCII value of the character to be printed. The string stops when either
+ * the ASCII value of the character to be printed. The string stops when eitheir
  * the stack is over, the value of the element is 0, or the value of element
  * is not in the ASCII table. If the stack is empty, print only a new line.
  */
-void pstr(stack_t **stack)
+void pstr(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp = *stack;
+
+	(void)line_number;
 
 	while (temp != NULL && temp->n != 0 && (temp->n >= 32 && temp->n <= 126))
 	{

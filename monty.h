@@ -48,6 +48,8 @@ typedef struct global_s
 	FILE *file;
 } global_t;
 
+extern global_t global;
+
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 int _isdigit(char *str);
@@ -67,6 +69,8 @@ void mul(stack_t **stack);
 void mod(stack_t **stack);
 void process_file(char *filename);
 void pchar(stack_t **stack);
-void pstr(stack_t **stack);
+void pstr(stack_t **stack, unsigned int line_number);
+void rotl(stack_t **stack, unsigned int line_number);
+void sub(stack_t **stack, unsigned int line_number);
 
 #endif /* MONTY_H */

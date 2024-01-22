@@ -43,6 +43,26 @@ void process_line(char *line, stack_t **stack, unsigned int line_number)
 	{
 		add(stack, line_number);
 	}
+	else if (strcmp(opcode, "sub") == 0)
+	{
+		sub(stack, line_number);
+	}
+	else if (strcmp(opcode, "div") == 0)
+	{
+		div_stack(stack);
+	}
+	else if (strcmp(opcode, "pchar") == 0)
+	{
+		pchar(stack);
+	}
+	else if (strcmp(opcode, "pstr") == 0)
+	{
+		pstr(stack, line_number);
+	}
+	else if (strcmp(opcode, "rotl") == 0)
+	{
+		rotl(stack, line_number);
+	}
 	else
 		{
 		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
